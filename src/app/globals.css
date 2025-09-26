@@ -14,7 +14,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: oklch(0.3338 0.1 254.78);
     --foreground: #ededed;
   }
 }
