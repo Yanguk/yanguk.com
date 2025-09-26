@@ -1,18 +1,39 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
 const pretendard = localFont({
-  src: "../font/pretendard-variable.woff2",
+  src: "../fonts/pretendard-variable.woff2",
   display: "swap",
   weight: "45 920",
   variable: "--font-pretendard",
 });
 
-const jetBrainsMono = JetBrains_Mono({
-  variable: "--font-jet-brains-mono",
-  subsets: ["latin"],
+const hack = localFont({
+  src: [
+    {
+      path: "../fonts/hack-regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../fonts/hack-bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../fonts/hack-italic.woff2",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../fonts/hack-bolditalic.woff2",
+      weight: "700",
+      style: "italic",
+    },
+  ],
+  display: "swap",
+  variable: "--font-hack",
 });
 
 export const metadata: Metadata = {
@@ -27,9 +48,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body
-        className={`${pretendard.variable} ${jetBrainsMono.variable} antialiased`}
-      >
+      <body className={`${pretendard.variable} ${hack.variable} antialiased`}>
         {children}
       </body>
     </html>
