@@ -1,0 +1,128 @@
+/* Kanagawa Theme for CSS Syntax Highlighting */
+/* Inspired by the Kanagawa Neovim theme */
+
+.token.keyword {
+  color: #957fb8;
+}
+
+.token.builtin {
+  color: #e46876;
+}
+
+.token.class-name {
+  color: #dca561;
+}
+
+.token.function {
+  color: #7fb4ca;
+}
+
+.token.boolean,
+.token.number {
+  color: #ff9e3b;
+}
+
+.token.string,
+.token.char {
+  color: #98bb6c;
+}
+
+.token.symbol {
+  color: #dca561;
+}
+
+.token.regex {
+  color: #d27e99;
+}
+
+.token.url {
+  color: #98bb6c;
+}
+
+.token.operator {
+  color: #7fb4ca;
+}
+
+.token.variable {
+  color: #c8c093;
+}
+
+.token.constant {
+  color: #ff9e3b;
+}
+
+.token.property {
+  color: #7fb4ca;
+}
+
+.token.punctuation {
+  color: #717c7c;
+}
+
+.token.important {
+  color: #957fb8;
+}
+
+.token.comment {
+  color: #717c7c;
+  font-style: italic;
+}
+
+.token.tag {
+  color: #7fb4ca;
+}
+
+.token.attr-name {
+  color: #dca561;
+}
+
+.token.attr-value {
+  color: #98bb6c;
+}
+
+.token.namespace {
+  color: #dca561;
+}
+
+.token.prolog,
+.token.doctype {
+  color: #957fb8;
+}
+
+.token.cdata {
+  color: #7fb4ca;
+}
+
+.token.entity {
+  color: #e46876;
+}
+
+.token.atrule {
+  color: #957fb8;
+}
+
+.token.selector {
+  color: #7fb4ca;
+}
+
+/* Diff */
+
+.token.deleted {
+  color: #e46876;
+}
+
+.token.inserted {
+  color: #98bb6c;
+}
+
+/* Other */
+
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+.token.underline {
+  text-decoration: underline;
+}

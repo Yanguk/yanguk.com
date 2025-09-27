@@ -1,7 +1,11 @@
-@import "tailwindcss";
 @import "tw-animate-css";
+@import "./prism.css";
+@import "./kanagawa.css";
 
-@custom-variant dark (&:is(.dark *));
+@plugin "@tailwindcss/forms";
+@plugin '@tailwindcss/typography';
+
+@custom-variant dark (&: is(.dark *));
 
 @theme inline {
   --font-sans: var(--font-pretendard);

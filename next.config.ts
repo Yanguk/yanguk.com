@@ -10,16 +10,18 @@ const nextConfig: NextConfig = {
 const withMDX = createMDX({
   options: {
     remarkPlugins: [
-      // Without options
+      "remark-frontmatter",
+      "remark-breaks",
       "remark-gfm",
-      // With options
       ["remark-toc", { heading: "The Table" }],
     ],
     rehypePlugins: [
-      // Without options
       "rehype-slug",
-      // With options
       ["rehype-katex", { strict: true, throwOnError: true }],
+      ["rehype-prism-plus", { defaultLanguage: "js", ignoreMissing: true }],
+      "rehype-autolink-headings",
+      "rehype-plugin-image-native-lazy-loading",
+      "rehype-preset-minify",
     ],
   },
   // Add markdown plugins here, as desired
