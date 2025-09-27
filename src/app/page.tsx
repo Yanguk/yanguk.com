@@ -14,6 +14,8 @@ export default function Home() {
           priority
         />
 
+        <p>안녕하세요 00</p>
+
         <Avatar>
           <AvatarFallback className="font-backyard">YU</AvatarFallback>
         </Avatar>
@@ -27,7 +29,7 @@ export default function Home() {
             .
           </li>
           <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
+            Save and see your changes instantly. 00 한글도 테스트
           </li>
         </ol>
       </main>

@@ -64,7 +64,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
+    <html lang="ko" className="dark">
       <body
         className={`${pretendard.variable} ${hack.variable} ${backyard.variable} antialiased`}
       >
