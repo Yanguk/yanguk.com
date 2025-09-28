@@ -1,20 +1,19 @@
+import { getBlogContentModule, getBlogSlugs } from "@/app/blog/util";
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return getBlogSlugs().map((slug) => ({ slug }));
+}
+
 export default async function Page({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const { default: Post } = await import(`@/content/${slug}.mdx`);
 
-  return (
-    <div className="prose font-mono max-w-none dark:prose-invert">
-      <Post />
-    </div>
-  );
+  const { default: Content } = await getBlogContentModule(slug);
+
+  return <Content />;
 }
-
-export function generateStaticParams() {
-  return [{ slug: "welcome" }, { slug: "about" }];
-}
-
-export const dynamicParams = false;

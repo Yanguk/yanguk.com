@@ -10,7 +10,6 @@ const nextConfig: NextConfig = {
 const withMDX = createMDX({
   options: {
     remarkPlugins: [
-      "remark-frontmatter",
       "remark-breaks",
       "remark-gfm",
       ["remark-toc", { heading: "The Table" }],
