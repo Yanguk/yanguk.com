@@ -1,4 +1,4 @@
-import { getBlogContentModule, getBlogSlugs } from "@/app/blog/util";
+import { getBlogSlugs, importBlogContent } from "@/app/blog/util";
 
 export const dynamicParams = false;
 
@@ -13,7 +13,7 @@ export default async function Page({
 }) {
   const { slug } = await params;
 
-  const { default: Content } = await getBlogContentModule(slug);
+  const { default: Content } = await importBlogContent(slug);
 
   return <Content />;
 }

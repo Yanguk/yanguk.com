@@ -1,6 +1,6 @@
-import fs from "fs";
-import { MDXContent } from "mdx/types";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
+import type { MDXContent } from "mdx/types";
 import { z } from "zod";
 
 const MetadataSchema = z.object({
@@ -16,21 +16,16 @@ type ContentModule = {
   metadata: Metadata;
 };
 
-function getMDXFiles(dir: string) {
-  return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
-}
-
 export function getBlogSlugs() {
-  const directory = path.join(process.cwd(), "src", "content");
+  const dir = path.join(process.cwd(), "src", "content");
 
-  return getMDXFiles(directory).map((file) =>
-    path.basename(file, path.extname(file)),
-  );
+  return fs
+    .readdirSync(dir)
+    .filter((file) => path.extname(file) === ".mdx")
+    .map((file) => path.basename(file, path.extname(file)));
 }
 
-export async function getBlogContentModule(
-  slug: string,
-): Promise<ContentModule> {
+export async function importBlogContent(slug: string): Promise<ContentModule> {
   const module = await import(`@/content/${slug}.mdx`);
 
   return {
@@ -40,15 +35,15 @@ export async function getBlogContentModule(
 }
 
 export function formatDate(date: string, includeRelative = false) {
-  let currentDate = new Date();
+  const currentDate = new Date();
   if (!date.includes("T")) {
     date = `${date}T00:00:00`;
   }
-  let targetDate = new Date(date);
+  const targetDate = new Date(date);
 
-  let yearsAgo = currentDate.getFullYear() - targetDate.getFullYear();
-  let monthsAgo = currentDate.getMonth() - targetDate.getMonth();
-  let daysAgo = currentDate.getDate() - targetDate.getDate();
+  const yearsAgo = currentDate.getFullYear() - targetDate.getFullYear();
+  const monthsAgo = currentDate.getMonth() - targetDate.getMonth();
+  const daysAgo = currentDate.getDate() - targetDate.getDate();
 
   let formattedDate = "";
 
@@ -62,7 +57,7 @@ export function formatDate(date: string, includeRelative = false) {
     formattedDate = "Today";
   }
 
-  let fullDate = targetDate.toLocaleString("en-us", {
+  const fullDate = targetDate.toLocaleString("en-us", {
     month: "long",
     day: "numeric",
     year: "numeric",
