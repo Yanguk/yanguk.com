@@ -1,4 +1,4 @@
-import { getBlogSlugs, importBlogContent } from "@/app/blog/util";
+import { getBlogSlugs, importBlogContent } from "@/util";
 
 export const dynamicParams = false;
 
