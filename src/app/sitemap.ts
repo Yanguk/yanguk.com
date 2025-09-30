@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
+import { siteMetadata } from "@/site-meta-data";
 import { getBlogSlugs, importBlogContent } from "@/util";
-import { siteMetaData } from "@/site-meta-data";
 
 export const dynamic = "force-static";
 
@@ -19,7 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   );
 
   const routes = [""].map((route) => ({
-    url: `${siteMetaData.siteUrl}/${route}`,
+    url: `${siteMetadata.siteUrl}/${route}`,
     lastModified: new Date().toISOString(),
   }));
 
@@ -28,7 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const hours = date.getHours();
 
     return {
-      url: `${siteMetaData.siteUrl}/blog/${item.slug}`,
+      url: `${siteMetadata.siteUrl}/blog/${item.slug}`,
       lastModified: new Date(date.setHours(hours - 9)).toISOString(),
     };
   });
