@@ -74,6 +74,8 @@
   --radius-xl: calc(var(--radius) + 4px);
 
   --color-highlight: oklch(79.3% 0.0924 258.4);
+  --color-point: oklch(64.4% 0.0904 247);
+  --color-profile: oklch(33.7% 0.0705 254.8);
   --background: oklch(22.5% 0.0456 254.8);
 }
 

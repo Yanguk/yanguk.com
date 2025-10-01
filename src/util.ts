@@ -17,7 +17,7 @@ type ContentModule = {
 };
 
 export function getBlogSlugs() {
-  const dir = path.join(process.cwd(), "src", "content", "posts");
+  const dir = path.join(process.cwd(), "src", "content", "blog");
 
   return fs
     .readdirSync(dir)
@@ -26,7 +26,7 @@ export function getBlogSlugs() {
 }
 
 export async function importBlogContent(slug: string): Promise<ContentModule> {
-  const module = await import(`@/content/posts/${slug}.mdx`);
+  const module = await import(`@/content/blog/${slug}.mdx`);
 
   return {
     ...module,

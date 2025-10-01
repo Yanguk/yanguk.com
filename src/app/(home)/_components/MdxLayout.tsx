@@ -8,7 +8,7 @@ export default function MdxLayout({
   return (
     <div
       className={cn(
-        "dark:prose-invert prose prose-neutral md:prose-lg prose-code:text-highlight",
+        "dark:prose-invert prose prose-neutral md:prose-lg prose-code:text-highlight prose-a:text-point",
         className,
       )}
     >

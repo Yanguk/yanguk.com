@@ -1,6 +1,7 @@
 export const siteMetadata = {
   title: "Yanguk Blog",
   description: "Software Engineer Blog",
+  headerTitle: 'Yanguk',
 
   siteUrl: "https://yanguk.com",
 
