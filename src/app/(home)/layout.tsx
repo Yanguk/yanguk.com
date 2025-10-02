@@ -5,6 +5,7 @@ import Header from "@/app/(home)/_components/Header";
 import MdxLayout from "@/app/(home)/_components/MdxLayout";
 import { allFontVariable } from "@/app/font";
 import { siteMetadata } from "@/site-meta-data";
+import CustomLink from "@/app/(home)/_components/Link";
 
 export const metadata: Metadata = {
   title: siteMetadata.title,
@@ -21,12 +22,23 @@ export default function RootLayout({
       <body
         className={`${allFontVariable} antialiased flex min-h-dvh flex-col md:mx-auto max-w-5xl  md:p-18`}
       >
-        <div className="flex-1 flex flex-col md:flex-row gap-12 m-3 my-8">
-          <Header />
+        <div className="flex-1 flex flex-col gap-10 m-3 my-8">
+          <div className="flex-1 flex flex-col md:flex-row gap-12">
+            <Header />
 
-          <main className="flex-1">
-            <MdxLayout>{children}</MdxLayout>
-          </main>
+            <main className="flex-1">
+              <CustomLink
+                href="/"
+                className="text-2xl hidden md:block not-prose"
+              >
+                <h1 className="mb-10">
+                {siteMetadata.headerTitle}
+                </h1>
+              </CustomLink>
+
+              {children}
+            </main>
+          </div>
 
           <Footer />
         </div>

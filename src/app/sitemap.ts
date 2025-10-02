@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteMetadata } from "@/site-meta-data";
-import { getBlogSlugs, importBlogContent } from "@/util";
+import { getBlogSlugs, importBlogContent } from "@/lib/blog";
 
 export const dynamic = "force-static";
 

@@ -1,1 +1,10 @@
-export { default } from "@/content/about.mdx";
+import MdxLayout from "@/app/(home)/_components/MdxLayout";
+import About from "@/content/about.mdx";
+
+export default function Page() {
+  return (
+    <MdxLayout>
+      <About />
+    </MdxLayout>
+  );
+}

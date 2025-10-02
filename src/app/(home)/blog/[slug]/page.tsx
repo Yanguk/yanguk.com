@@ -1,4 +1,5 @@
-import { getBlogSlugs, importBlogContent } from "@/util";
+import MdxLayout from "@/app/(home)/_components/MdxLayout";
+import { getBlogSlugs, importBlogContent } from "@/lib/blog";
 
 export const dynamicParams = false;
 
@@ -15,5 +16,9 @@ export default async function Page({
 
   const { default: Content } = await importBlogContent(slug);
 
-  return <Content />;
+  return (
+    <MdxLayout>
+      <Content />
+    </MdxLayout>
+  );
 }

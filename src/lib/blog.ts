@@ -6,7 +6,6 @@ import { z } from "zod";
 const MetadataSchema = z.object({
   title: z.string().min(1, "Title is required"),
   publishedAt: z.string().min(1, "Published date is required"),
-  summary: z.string().min(1, "Summary is required"),
 });
 
 type Metadata = z.infer<typeof MetadataSchema>;
