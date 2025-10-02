@@ -16,12 +16,12 @@ export default async function Page() {
   );
 
   return (
-    <div className="not-prose">
+    <div className="not-prose flex flex-col gap-7">
       {contents.map(({ metadata, slug }) => (
         <div key={slug}>
           <CustomLink
             href={`/blog/${slug}`}
-            key={slug}
+            className="break-words font-semibold text-foreground text-lg hover:opacity-80 md:text-xl"
           >
             {metadata.title}
           </CustomLink>

@@ -20,7 +20,7 @@ export default function Header() {
       id="header"
       className="flex flex-col gap-5 border-b-1 pb-2 md:w-1/6 md:border-r-1 md:border-b-0"
     >
-      <Avatar className="mb-3 size-10" asChild>
+      <Avatar className="mb-3 size-10 hover:opacity-80" asChild>
         <CustomLink href="/" aria-label={siteMetadata.headerTitle}>
           <AvatarFallback className="bg-profile font-backyard">
             YU
@@ -34,7 +34,7 @@ export default function Header() {
             key={item.href}
             href={item.href}
             className={cn(
-              "font-medium text-gray-900 hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400",
+              "font-medium text-gray-900 hover:text-primary-500 hover:opacity-80 dark:text-gray-100 dark:hover:text-primary-400",
               curNav === item.href.slice(1) &&
                 "dark:font-bold dark:text-highlight",
             )}
