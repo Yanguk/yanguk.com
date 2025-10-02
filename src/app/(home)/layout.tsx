@@ -21,7 +21,7 @@ export default function RootLayout({
       <body
         className={`${allFontVariable} antialiased flex min-h-dvh flex-col md:mx-auto max-w-5xl  md:p-18`}
       >
-        <div className="flex-1 flex flex-col md:flex-row gap-6 m-3 my-8">
+        <div className="flex-1 flex flex-col md:flex-row gap-12 m-3 my-8">
           <Header />
 
           <main className="flex-1">
