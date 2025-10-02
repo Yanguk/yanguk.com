@@ -2,10 +2,8 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import Footer from "@/app/(home)/_components/Footer";
 import Header from "@/app/(home)/_components/Header";
-import MdxLayout from "@/app/(home)/_components/MdxLayout";
 import { allFontVariable } from "@/app/font";
 import { siteMetadata } from "@/site-meta-data";
-import CustomLink from "@/app/(home)/_components/Link";
 
 export const metadata: Metadata = {
   title: siteMetadata.title,
@@ -20,22 +18,13 @@ export default function RootLayout({
   return (
     <html lang="ko" className="dark">
       <body
-        className={`${allFontVariable} antialiased flex min-h-dvh flex-col md:mx-auto max-w-5xl  md:p-18`}
+        className={`${allFontVariable} flex h-dvh w-full max-w-5xl flex-col antialiased md:mx-auto md:p-18`}
       >
-        <div className="flex-1 flex flex-col gap-10 m-3 my-8">
-          <div className="flex-1 flex flex-col md:flex-row gap-12">
+        <div className="m-3 my-8 flex flex-1 flex-col gap-10">
+          <div className="flex flex-1 flex-col gap-12 md:flex-row">
             <Header />
 
-            <main className="flex-1">
-              <CustomLink
-                href="/"
-                className="text-2xl hidden md:block not-prose"
-              >
-                <h1 className="mb-10">
-                {siteMetadata.headerTitle}
-                </h1>
-              </CustomLink>
-
+            <main className="prose-invert prose-neutral prose-sm md:prose-base prose-a:text-point prose-code:text-highlight">
               {children}
             </main>
           </div>

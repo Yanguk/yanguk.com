@@ -10,31 +10,33 @@ export default function Header() {
   const pathname = usePathname();
   const curNav = pathname.slice(1).split("/").shift();
 
+  const menus = [
+    { href: "/", label: "About" },
+    { href: "/blog", label: "Blog" },
+  ];
+
   return (
-    <div id="header" className="flex flex-col gap-5 border-b-1 pb-2 md:border-b-0 md:w-1/6 md:border-r-1 border-gray-600">
-      <Avatar className="size-10 mb-3" asChild>
+    <div
+      id="header"
+      className="flex flex-col gap-5 border-b-1 pb-2 md:w-1/6 md:border-r-1 md:border-b-0"
+    >
+      <Avatar className="mb-3 size-10" asChild>
         <CustomLink href="/" aria-label={siteMetadata.headerTitle}>
-          <AvatarFallback className="font-backyard bg-profile">
+          <AvatarFallback className="bg-profile font-backyard">
             YU
           </AvatarFallback>
         </CustomLink>
       </Avatar>
 
-      <CustomLink href="/" className="text-2xl md:hidden">
-        {siteMetadata.headerTitle}
-      </CustomLink>
-
       <div className="flex gap-5 md:flex-col">
-        {[
-          { href: "/", label: "About" },
-          { href: "/blog", label: "Blog" },
-        ].map((item) => (
+        {menus.map((item) => (
           <CustomLink
             key={item.href}
             href={item.href}
             className={cn(
-              "hover:text-primary-500 dark:hover:text-primary-400 font-medium text-gray-900 dark:text-gray-100",
-              curNav === item.href.slice(1) && "dark:text-highlight dark:font-bold",
+              "font-medium text-gray-900 hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400",
+              curNav === item.href.slice(1) &&
+                "dark:font-bold dark:text-highlight",
             )}
           >
             {item.label}

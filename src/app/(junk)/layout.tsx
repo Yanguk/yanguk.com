@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="ko" className="dark">
       <body
-        className={`${allFontVariable} antialiased dark:prose-invert prose prose-neutral md:prose-lg prose-code:text-highlight`}
+        className={`${allFontVariable} dark:prose-invert prose prose-neutral md:prose-lg prose-code:text-highlight antialiased`}
       >
         {children}
       </body>
