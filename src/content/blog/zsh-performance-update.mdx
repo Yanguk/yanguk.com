@@ -1,0 +1,94 @@
+export const metadata = {
+  title: "느려진 zsh 터미널 성능 최적화",
+  publishedAt: "2025-08-02",
+};
+
+## 개요
+
+어느 순간부터 쉘이 켜지는 속도가 거슬리게 되어서 최적화를 시도 하였다.
+
+## 원인 찾기
+
+[zsh-bench](https://github.com/romkatv/zsh-bench)을 돌려보았다.
+
+
+![zsh-bench-result](/static/images/250802/zsh-bench.png)
+
+눈 여겨볼건 이거다.
+- first_prompt_lag_ms=1409.696
+
+처음 키고 프롬프트 입력할수 있을때 까지 1409ms가 걸린다.
+`zsh/zprof`를 사용하면 뭐때문에 느린지 알 수 있다.
+
+![zprof](/static/images/250802/zprof.png)
+
+nvm이 많이 느린편인걸 알 수 있다.
+
+## 개선 하기
+
+최적화 하는김에 이번에 플러그인 매니저도 바꾸고 다른 최적화도 뭘 할 수 있는지 살펴보고  
+다음과 같은 작업을 하였다.
+
+- nvm 대안책 찾기 => [Volta](https://volta.sh/)
+- oh-my-zsh => [antidote](https://github.com/mattmc3/antidote)
+
+
+## 결과
+
+![zsh-bench-result](/static/images/250802/result.png)
+
+first_prompt_lag_ms가 `98ms`로 줄었다. 거의 바로 켜진다고 보면된다.
+
+다른사람들 자료보면 50ms 밑까지도 줄이기도하고,  
+50ms 밑은 0ms과 체감상 차이가 없다고 하여서 더 줄이고 싶은데 일단 오늘는 여기까지...  
+
+> 설정은 제 [dotfiles](https://github.com/Yanguk/dotfiles)에서 볼 수 있습니다.
+
+<br />
+
+### 추가내용 (250803)
+
+nix의 기본 설정때문에 속도가 느린거였다.
+```nix
+programs.zsh = {
+  enable = true;
+  enableBashCompletion = false;
+  enableCompletion = false;
+  variables = {
+    ZDOTDIR = "$HOME/.config/zsh";
+  };
+  promptInit = ''
+    fpath=(${pkgs.antidote}/share/antidote/functions $fpath)
+    autoload -Uz antidote
+  '';
+};
+```
+
+기본 설정들을 비활성화하고  
+promptInit도 기본값을 날릴겸 antidote를 lazy하게 가져오도록 섩정하였다.
+
+![zsh-bench-result-2](/static/images/250802/result2.png)
+
+최종적으론 1409.696가 39.118이 되었고 `97.22%` 빨라졌다. 이젠 바로 켜진다.
+
+<br />
+
+### 추가내용 (250803)
+`omz` 프레임워크를 벗어나니 `sub-string-search` 기능이 빠져있다.  
+zsh-vi 모드를 사용하기에 해당 기능도 넣어주었다.  
+
+```bash
+function zvm_before_init() {
+    # up, down 시 히스토리 substring search
+    autoload -U history-search-end
+    zle -N history-beginning-search-backward-end history-search-end
+    zle -N history-beginning-search-forward-end history-search-end
+
+    # zsh-vi-mode
+    zvm_bindkey viins '^[[A' history-beginning-search-backward-end
+    zvm_bindkey viins '^[[B' history-beginning-search-forward-end
+    zvm_bindkey vicmd '^[[A' history-beginning-search-backward-end
+    zvm_bindkey vicmd '^[[B' history-beginning-search-forward-end
+}
+```
+

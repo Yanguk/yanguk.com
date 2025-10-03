@@ -13,15 +13,10 @@ const withMDX = createMDX({
     remarkPlugins: [
       "remark-breaks",
       "remark-gfm",
-      ["remark-toc", { heading: "The Table" }],
     ],
     rehypePlugins: [
       "rehype-slug",
-      ["rehype-katex", { strict: true, throwOnError: true }],
       ["rehype-prism-plus", { defaultLanguage: "js", ignoreMissing: true }],
-      "rehype-autolink-headings",
-      "rehype-plugin-image-native-lazy-loading",
-      "rehype-preset-minify",
     ],
   },
   // Add markdown plugins here, as desired

@@ -16,9 +16,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" className="dark">
+    <html lang="ko" className={`dark ${allFontVariable} antialiased`}>
       <body
-        className={`${allFontVariable} flex h-dvh w-full max-w-5xl flex-col antialiased md:mx-auto md:p-18`}
+        className={`flex h-dvh w-full max-w-5xl flex-col md:mx-auto md:p-18`}
       >
         <div className="m-3 my-8 flex flex-1 flex-col gap-10">
           <div className="flex flex-1 flex-col gap-12 md:flex-row">
