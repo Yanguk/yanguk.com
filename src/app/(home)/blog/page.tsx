@@ -18,16 +18,17 @@ export default async function Page() {
   return (
     <div className="not-prose flex flex-col gap-7">
       {contents.map(({ metadata, slug }) => (
-        <div key={slug}>
-          <CustomLink
-            href={`/blog/${slug}`}
-            className="break-words font-semibold text-foreground text-lg hover:opacity-80 md:text-xl"
-          >
+        <CustomLink
+          className="hover:opacity-85"
+          key={slug}
+          href={`/blog/${slug}`}
+        >
+          <p className="mb-2 break-words font-semibold text-foreground text-lg md:text-xl">
             {metadata.title}
-          </CustomLink>
+          </p>
 
           <time className="block">{metadata.publishedAt}</time>
-        </div>
+        </CustomLink>
       ))}
     </div>
   );
