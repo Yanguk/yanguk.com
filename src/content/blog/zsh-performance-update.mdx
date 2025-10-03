@@ -18,7 +18,7 @@ export const metadata = {
 - `first_prompt_lag_ms`=1409.696
 
 처음 키고 프롬프트 입력할수 있을때 까지 1409ms가 걸린다.
-`zsh/zprof`를 사용하면 뭐때문에 느린지 알 수 있다.
+그러면 이제 `zsh/zprof`를 사용하여 무엇 때문에 느린지 살펴보자
 
 ![zprof](/zsh-performance-update/zprof.png)
 
@@ -26,7 +26,7 @@ nvm이 많이 느린편인걸 알 수 있다.
 
 ## 개선 하기
 
-nvm을 제거하고 하는김에 플러그인 매니저까지 변경하였다.
+nvm을 제거하고 하는김에 플러그인 매니저까지 변경!
 
 - nvm 대안책 찾기 => [Volta](https://volta.sh/)
 - oh-my-zsh => [antidote](https://github.com/mattmc3/antidote)
@@ -36,11 +36,11 @@ nvm을 제거하고 하는김에 플러그인 매니저까지 변경하였다.
 ![zsh-bench-result-2](/zsh-performance-update/result2.png)
 
 first_prompt_lag_ms가 `39.118ms`로 줄었다.
-이젠 바로 바로 켜진다.
+이제 아주 쾌적하게 터미널 쓸 수 있을 듯!
 
 ### 추가적으로...
 
-`omz` 프레임워크를 벗어나니 `sub-string-search` 기능이 빠져있다.  
+`omz` 프레임워크를 벗어나니 `sub-string-search` 기능이 빠져있다.
 zsh-vi 모드를 사용하기에 해당 기능도 넣어주었다.
 
 ```bash
