@@ -29,7 +29,7 @@ export default function RootLayout({
           <div className="flex flex-1 flex-col gap-12 md:flex-row">
             <Header />
 
-            <main className="prose prose-invert prose-neutral prose-sm md:prose-base size-full prose-a:text-highlight prose-code:text-point prose-a:hover:opacity-80">
+            <main className="prose prose-invert prose-neutral prose-sm md:prose-base size-full prose-a:hover:opacity-80">
               {children}
             </main>
           </div>
