@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
-import { allFontVariable } from "@/app/font";
+import { allFontVariable } from "@/app/(home)/font";
 
 export const metadata: Metadata = {
   title: "yanguk",
