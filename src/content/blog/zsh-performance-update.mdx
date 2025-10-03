@@ -1,24 +1,40 @@
 export const metadata = {
   title: "느려진 zsh 터미널 성능 최적화",
-  publishedAt: "2025-08-02",
+  publishedAt: "2025-10-03",
 };
 
-# 느려진 zsh 터미널 성능 최적화
+# {metadata.title}
 
-어느 순간부터 쉘이 켜지는 속도가 거슬리게 되어서 최적화를 시도 하였다.
+개발할 때는 주로 neovim을 사용하다 보니, 터미널에서 모든 작업을 처리한다.
+하루에도 여러 변 쉘을 껏다 키기에, 켜지는 속도가 느리면 거슬리게 된다.
+
+어느 순간부터 쉘이 켜지는 속도가 거슬리게 되어서 최적화를 시도 하게 되었다.
 
 ## 원인 찾기
 
 [zsh-bench](https://github.com/romkatv/zsh-bench)을 돌려보았다.
+```sh
+# 설치하고 실행
+> ~/zsh-bench/zsh-bench
+```
 
 ![zsh-bench-result](/zsh-performance-update/zsh-bench.png)
 
-눈 여겨볼건 이거다.
+눈 여겨볼건 이거다. `first_prompt_lag_ms=1409.696`
 
-- `first_prompt_lag_ms`=1409.696
-
-처음 키고 프롬프트 입력할수 있을때 까지 1409ms가 걸린다.
+처음 키고 프롬프트 입력할수 있을때 까지 `1409ms`가 걸린다.
 그러면 이제 `zsh/zprof`를 사용하여 무엇 때문에 느린지 살펴보자
+
+```sh
+// .zshrc 에 해당 라인 추가
+zmodload zsh/zprof
+```
+
+```sh
+# 실행
+> zprof
+```
+
 
 ![zprof](/zsh-performance-update/zprof.png)
 
@@ -26,19 +42,46 @@ nvm이 많이 느린편인걸 알 수 있다.
 
 ## 개선 하기
 
-nvm을 제거하고 하는김에 플러그인 매니저까지 변경!
+nvm을 제거하고 하는김에 플러그인 매니저까지 변경하였다.
 
 - nvm 대안책 찾기 => [Volta](https://volta.sh/)
 - oh-my-zsh => [antidote](https://github.com/mattmc3/antidote)
+
+본인은 nix를 사용하기에 아래와 같이 설정을 하였다.
+
+```nix
+# configuration.nix
+{
+  environment.systemPackages = with pkgs; [
+    ...,
+    volta
+  ]
+
+  programs.zsh = {
+    enable = true;
+    enableBashCompletion = false;
+    enableCompletion = false;
+    variables = {
+      ZDOTDIR = "$HOME/.config/zsh";
+    };
+    promptInit = ''
+      fpath=(${pkgs.antidote}/share/antidote/functions $fpath)
+      autoload -Uz antidote
+    '';
+  };
+}
+```
 
 ## 결과
 
 ![zsh-bench-result-2](/zsh-performance-update/result2.png)
 
-first_prompt_lag_ms가 `39.118ms`로 줄었다.
-이제 아주 쾌적하게 터미널 쓸 수 있을 듯!
+first_prompt_lag_ms가 `39.118ms`로 줄었다. (97.22% 빨라짐)
+`volta` 도 nvm 보다 휠씬 간단하고 빠르다.
 
-### 추가적으로...
+아주 쾌적하고 만족스럽다.🙂
+
+## 추가적으로...
 
 `omz` 프레임워크를 벗어나니 `sub-string-search` 기능이 빠져있다.
 zsh-vi 모드를 사용하기에 해당 기능도 넣어주었다.
@@ -57,3 +100,6 @@ function zvm_before_init() {
     zvm_bindkey vicmd '^[[B' history-beginning-search-forward-end
 }
 ```
+
+
+> 설정은 저의 [dotfiles](https://github.com/Yanguk/dotfiles)에서 볼 수 있습니다.

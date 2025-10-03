@@ -5,15 +5,12 @@ const nextConfig: NextConfig = {
   // Configure `pageExtensions` to include markdown and MDX files
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   // Optionally, add any other Next.js config below
-  output: 'export',
+  output: "export",
 };
 
 const withMDX = createMDX({
   options: {
-    remarkPlugins: [
-      "remark-breaks",
-      "remark-gfm",
-    ],
+    remarkPlugins: ["remark-breaks", "remark-gfm"],
     rehypePlugins: [
       "rehype-slug",
       ["rehype-prism-plus", { defaultLanguage: "js", ignoreMissing: true }],

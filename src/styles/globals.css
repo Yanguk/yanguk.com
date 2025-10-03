@@ -72,10 +72,12 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
+  /* custom */
   --color-highlight: oklch(79.3% 0.0924 258.4);
   --color-point: oklch(0.7022 0.1892 22.2279);
   --color-profile: oklch(33.7% 0.0705 254.8);
   --background: oklch(22.5% 0.0456 254.8);
+  --color-primary: oklch(0.9851 0 0);
 }
 
 :root {
@@ -197,4 +199,28 @@
     @apply bg-background text-foreground;
     letter-spacing: var(--tracking-normal);
   }
+}
+
+/* 아래부턴 커스텀 */
+@utility prose {
+  --tw-prose-body: var(--color-primary);
+  /*
+  --tw-prose-headings: var(--color-primary);
+  --tw-prose-bold: var(--color-primary);
+  --tw-prose-quote-borders: var(--color-slate-300);
+  --tw-prose-quotes: var(--color-muted-foreground);
+  --tw-prose-code: var(--color-primary);
+
+  code {
+    &::before,
+    &::after {
+      display : none ;
+    }
+    text-wrap : nowrap ;
+  }
+
+  blockquote {
+    font-weight : 400 ;
+  }
+ */
 }
