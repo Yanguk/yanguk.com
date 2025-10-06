@@ -4,7 +4,7 @@ import { getAllBlogContents } from "@/lib/blog";
 export const dynamicParams = false;
 
 export default async function Page() {
-  const contents = await getAllBlogContents()
+  const contents = await getAllBlogContents();
 
   return (
     <div className="not-prose flex flex-col gap-7">
