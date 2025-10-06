@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import { getBlogSlugs, importBlogContent } from "@/lib/blog";
 
 export const dynamicParams = false;
@@ -13,7 +14,11 @@ export default async function Page({
 }) {
   const { slug } = await params;
 
-  const { default: Content } = await importBlogContent(slug);
+  const { default: Content, metadata } = await importBlogContent(slug);
+
+  if (metadata.draft) {
+    return notFound(); // Render 404 page
+  }
 
   return <Content />;
 }

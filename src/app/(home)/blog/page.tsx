@@ -1,19 +1,10 @@
 import CustomLink from "@/app/(home)/_components/Link";
-import { getBlogSlugs, importBlogContent } from "@/lib/blog";
+import { getAllBlogContents } from "@/lib/blog";
 
 export const dynamicParams = false;
 
 export default async function Page() {
-  const contents = await Promise.all(
-    getBlogSlugs().map(async (slug) => {
-      const { metadata } = await importBlogContent(slug);
-
-      return {
-        metadata,
-        slug,
-      };
-    }),
-  );
+  const contents = await getAllBlogContents()
 
   return (
     <div className="not-prose flex flex-col gap-7">

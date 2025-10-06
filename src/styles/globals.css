@@ -195,9 +195,36 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
     letter-spacing: var(--tracking-normal);
+  }
+
+  /* 헤더 링크 스타일 */
+  .icon.icon-link::after {
+    content: "🔗"; /* 링크 심볼 아이콘 텍스트 추가 */
+    opacity: 0; /* 기본적으로 숨김 */
+    font-size: 0.6em; /* 아이콘 크기 설정 */
+    display: inline-block;
+    margin-left: 0.725em;
+    transition: opacity 0.2s ease; /* 부드러운 전환 효과 */
+    vertical-align: middle; /* 수직 가운데 정렬 */
+  }
+
+  h1:hover .icon.icon-link::after,
+  h2:hover .icon.icon-link::after,
+  h3:hover .icon.icon-link::after,
+  h4:hover .icon.icon-link::after {
+    opacity: 0.5; /* 호버 시 표시 */
+  }
+
+  /* 각주 스타일 */
+  .footnotes {
+    font-size: 0.875em;
+    opacity: 0.85;
+    margin-top: 3.5em;
+    border-top: 1px solid var(--color-border);
   }
 }
 

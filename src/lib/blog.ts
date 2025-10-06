@@ -6,6 +6,7 @@ import { z } from "zod";
 const MetadataSchema = z.object({
   title: z.string().min(1, "Title is required"),
   publishedAt: z.string().min(1, "Published date is required"),
+  draft: z.boolean().optional().default(false),
 });
 
 type Metadata = z.infer<typeof MetadataSchema>;
@@ -31,6 +32,21 @@ export async function importBlogContent(slug: string): Promise<ContentModule> {
     ...module,
     metadata: MetadataSchema.parse(module.metadata),
   };
+}
+
+export async function getAllBlogContents() {
+  const contents = await Promise.all(
+    getBlogSlugs().map(async (slug) => {
+      const { metadata } = await importBlogContent(slug);
+
+      return {
+        metadata,
+        slug,
+      };
+    }),
+  );
+
+  return contents.filter(({ metadata }) => !metadata.draft);
 }
 
 export function formatDate(date: string, includeRelative = false) {

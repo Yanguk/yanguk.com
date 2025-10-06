@@ -10,9 +10,21 @@ const nextConfig: NextConfig = {
 
 const withMDX = createMDX({
   options: {
-    remarkPlugins: ["remark-breaks", "remark-gfm"],
+    remarkPlugins: [
+      "remark-breaks",
+      "remark-gfm",
+      ["remark-toc", { heading: "목차" }],
+    ],
     rehypePlugins: [
-      "rehype-slug",
+      ["rehype-slug", { prefix: "yu" }],
+      [
+        "rehype-autolink-headings",
+        {
+          behavior: "append",
+        },
+      ],
+      ["rehype-katex", { strict: true, throwOnError: true }],
+      "rehype-plugin-image-native-lazy-loading",
       ["rehype-prism-plus", { defaultLanguage: "js", ignoreMissing: true }],
     ],
   },
