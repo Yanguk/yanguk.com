@@ -8,15 +8,17 @@ const nextConfig: NextConfig = {
   // output: "export",
 };
 
+const PRE_FIX = "yu-";
+
 const withMDX = createMDX({
   options: {
     remarkPlugins: [
       "remark-breaks",
       "remark-gfm",
-      ["remark-toc", { heading: "목차" }],
+      ["remark-toc", { heading: "목차", prefix: PRE_FIX }],
     ],
     rehypePlugins: [
-      ["rehype-slug", { prefix: "yu" }],
+      ["rehype-slug", { prefix: PRE_FIX }],
       [
         "rehype-autolink-headings",
         {
