@@ -3,5 +3,5 @@
  * @type {import('lint-staged').Configuration}
  */
 export default {
-  "*": ["bun run lint --write --unsafe", "bun run format"],
+  "*": "biome check --write --unsafe",
 };

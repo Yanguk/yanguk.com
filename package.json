@@ -7,8 +7,9 @@
     "build": "next build --turbopack",
     "start": "next start",
     "clean": "git clean -fdx",
-    "lint": "biome check",
+    "lint": "biome lint",
     "format": "biome format --write",
+    "check": "biome check --write --unsafe",
     "prepare": "husky"
   },
   "dependencies": {
