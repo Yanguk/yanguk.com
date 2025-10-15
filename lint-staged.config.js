@@ -3,5 +3,5 @@
  * @type {import('lint-staged').Configuration}
  */
 export default {
-  "*": "biome check --write --unsafe",
+  "*": "biome check --write --unsafe --no-errors-on-unmatched ",
 };
