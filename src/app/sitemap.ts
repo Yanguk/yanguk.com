@@ -7,7 +7,7 @@ export const dynamic = "force-static";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getAllBlogContents();
 
-  const routes = [""].map((route) => ({
+  const routes = ["", "blog"].map((route) => ({
     url: `${siteMetadata.siteUrl}/${route}`,
     lastModified: new Date().toISOString(),
   }));
