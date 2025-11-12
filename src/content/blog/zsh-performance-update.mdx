@@ -30,7 +30,7 @@ export const metadata = {
 
 ```sh
 # .zshrc 에 해당 라인 추가
-zmodload zsh/zprof
+> zmodload zsh/zprof
 ```
 
 ```sh
@@ -57,7 +57,8 @@ nvm을 제거하고 하는김에 플러그인 매니저까지 변경하였다.
 # configuration.nix
 {
   environment.systemPackages = with pkgs; [
-    ...,
+    ...
+    antidote
     volta
   ]
 
