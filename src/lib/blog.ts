@@ -46,6 +46,10 @@ export async function getAllBlogContents() {
     }),
   );
 
+  contents.sort((a, b) =>
+    b.metadata.publishedAt.localeCompare(a.metadata.publishedAt),
+  );
+
   return contents.filter(({ metadata }) => !metadata.draft);
 }
 
