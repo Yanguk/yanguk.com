@@ -264,8 +264,7 @@ export const callRpcOrThrow = async <T>(
 export const isYuClientErr = (err: unknown): err is YuClientErr =>
   err instanceof YuClientErr;
 
-// 핸들러는 다른 에러타입 고려 할 필요없이 YuClientErr만 다루도록 정의
-export const handleYuClientErr =
+export const handleYuClientErrOrThrow =
   <T extends (e: YuClientErr) => void>(handler: T) =>
   (err: Error) => {
     if (isYuClientErr(err)) {
@@ -296,8 +295,7 @@ const loginMutation = useMutation({
   onSuccess: () => {
     void navigate({ to: "/dashboard" });
   },
-  // Note: 별다른 의미는없고, 사용방법 예시 코드로써 넣어둠
-  onError: handleYuClientErr((err) => {
+  onError: handleYuClientErrOrThrow((err) => {
     if (err.code === "INTERNAL_SERVER_ERROR") {
       console.error("something wrong");
     }
