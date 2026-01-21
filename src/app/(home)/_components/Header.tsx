@@ -20,13 +20,16 @@ export default function Header() {
       id="header"
       className="flex flex-col gap-5 border-b-1 pb-2 md:border-r-1 md:border-b-0 md:pr-8"
     >
-      <Avatar className="mb-3 size-10 hover:opacity-80" asChild>
-        <CustomLink href="/" aria-label={siteMetadata.headerTitle}>
-          <AvatarFallback className="bg-profile font-backyard">
-            YU
-          </AvatarFallback>
-        </CustomLink>
-      </Avatar>
+      <Avatar
+        className="mb-3 size-10 after:border-none"
+        render={
+          <CustomLink href="/" aria-label={siteMetadata.headerTitle}>
+            <AvatarFallback className="bg-profile font-backyard text-gray-100">
+              YU
+            </AvatarFallback>
+          </CustomLink>
+        }
+      ></Avatar>
 
       <div className="flex gap-5 md:flex-col">
         {menus.map((item) => (
