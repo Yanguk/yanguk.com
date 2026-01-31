@@ -1,9 +1,7 @@
-export const metadata = {
-  title: "Next.js App Router 캐싱 메커니즘",
-  publishedAt: "2025-04-12",
-};
-
-# {metadata.title}
+---
+title: Next.js App Router 캐싱 메커니즘
+publishedAt: 2025-04-12
+---
 
 nextjs app router 방식에서는 최적화를 위한 내부에서 다양한 캐싱이 진행된다.  
 이러한 캐싱은 어떤게 있는지 알아볼려고 한다.

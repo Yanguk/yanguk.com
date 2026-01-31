@@ -18,7 +18,9 @@ export default async function Page() {
             {metadata.title}
           </p>
 
-          <time className="block opacity-50">{metadata.publishedAt}</time>
+          <time className="block opacity-50">
+            {metadata.publishedAt.toISOString().split("T")[0]}
+          </time>
         </CustomLink>
       ))}
     </div>

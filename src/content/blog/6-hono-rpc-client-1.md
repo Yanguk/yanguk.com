@@ -1,9 +1,7 @@
-export const metadata = {
-  title: "hono rpc, typesafe하게 사용하기-1",
-  publishedAt: "2026-01-21",
-};
-
-# {metadata.title}
+---
+title: hono rpc, typesafe하게 사용하기-1
+publishedAt: 2026-01-21
+---
 
 회사에서 새로운 프로젝트 개발시 서버 http 프레임워크를 [hono](https://hono.dev/)로 사용하게 되었다.
 
@@ -46,7 +44,6 @@ if (res.ok) {
 ## 문제점
 
 - 호노는 에러 타입을 추론해주지 않는다.
-
   - 이전 프로젝트에서 `trpc`를 썼을땐 에러 타입도 같이 잡혔는데, 여기선 에러 응답을 어떻게 하는지는 자유라서 당연한 것일 수도 있다.
 
 - 위 케이스로 인하여, 클라이언트에서 받는 결과값은 성공케이스 타입만 존재하게 된다.
@@ -201,7 +198,7 @@ export const isYuClientErr = (err: unknown): err is YuClientErr =>
 export type { ClientResponse } from "hono/client";
 
 export const callRpc = async <T>(
-  rpc: Promise<ClientResponse<T>>
+  rpc: Promise<ClientResponse<T>>,
 ): Promise<{ ok: true; data: T } | { ok: false; data: YuClientErrorJson }> => {
   try {
     const data = await rpc;
@@ -243,7 +240,7 @@ rpc요청에선 성공응답 타입은 얻을 수 있으니까,
 
 ```ts
 export const callRpcOrThrow = async <T>(
-  rpc: Promise<ClientResponse<T>>
+  rpc: Promise<ClientResponse<T>>,
 ): Promise<T> => {
   const res = await callRpc(rpc);
 
@@ -290,7 +287,7 @@ const loginMutation = useMutation({
     callRpcOrThrow(
       client.auth.login.$put({
         json: { account, pwd },
-      })
+      }),
     ),
   onSuccess: () => {
     void navigate({ to: "/dashboard" });

@@ -1,9 +1,7 @@
-export const metadata = {
-  title: "markdown 블로그 개발하기!",
-  publishedAt: "2026-01-21",
-};
-
-# {metadata.title}
+---
+title: markdown 블로그 개발하기!
+publishedAt: 2026-01-21
+---
 
 지금 블로그는 nextjs의 mdx지원 기능을 이용해서 구현되었고, vercel로 호스팅중 이다.
 블로그 리모델링할 겸 해서 개선하고 싶은 점이 있어서 구조좀 변경 할려고 한다.
@@ -16,22 +14,20 @@ export const metadata = {
 ### Feature 항목
 
 - mdx 파싱하여 html으로 변환 해서 페이지로 만들기
-
   - `remark`[^1], `rehypo`[^2] 를 사용해서 변환 과정을 거친다.
     > mdx -> remark -> rehype -> html
   - 마크다운의 코드 블럭 스타일 처리 (`prism` 사용)
 
 [^1]: 마크다운을 AST로 파싱하고, 내용을 가공하거나 변형하는 데 사용
+
 [^2]: HTML를 AST로 만들고, 내용을 가공하거나 변형하는 데 사용
 
 - sitemap[^3] 만들기
-
   - SEO를 위해 필요함
 
 [^3]: 검색 엔진용 사이트맵
 
 - RSS Feed 설정
-
   - 내 블로그 피드 받고 싶어하는 팬들을 위해서...
 
 ### 구현 하기
@@ -105,11 +101,11 @@ export async function getAllBlogContents() {
         metadata,
         slug,
       };
-    })
+    }),
   );
 
   contents.sort((a, b) =>
-    b.metadata.publishedAt.localeCompare(a.metadata.publishedAt)
+    b.metadata.publishedAt.localeCompare(a.metadata.publishedAt),
   );
 
   return contents.filter(({ metadata }) => !metadata.draft);

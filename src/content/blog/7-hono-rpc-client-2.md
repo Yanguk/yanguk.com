@@ -1,9 +1,7 @@
-export const metadata = {
-  title: "hono rpc, typesafe하게 사용하기-2",
-  publishedAt: "2026-01-25",
-};
-
-# {metadata.title}
+---
+title: hono rpc, typesafe하게 사용하기-2
+publishedAt: 2026-01-25
+---
 
 이전글에서 좀더 나은 방향을 찾아서 코드만 작성해둔다.
 
@@ -91,8 +89,8 @@ export const mapError = async (error: Error) => {
 export const handleApiError =
   (
     errHandler: (
-      err: Awaited<ReturnType<typeof mapError>>
-    ) => void | Promise<void>
+      err: Awaited<ReturnType<typeof mapError>>,
+    ) => void | Promise<void>,
   ) =>
   async (err: Error) =>
     errHandler(await mapError(err));

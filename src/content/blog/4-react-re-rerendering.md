@@ -1,9 +1,7 @@
-export const metadata = {
-  title: "리액트 동작 방식과 최적화",
-  publishedAt: "2025-11-11",
-};
-
-# {metadata.title}
+---
+title: 리액트 동작 방식과 최적화
+publishedAt: 2025-11-11
+---
 
 ~~[React Re Rendering](https://react-re-render.yanguk.com)~~
 
@@ -11,8 +9,6 @@ export const metadata = {
 
 > 추후 필요하면 블로그로 다시 작성 의향있음
 
-
 > [!CAUTION]
 > 20260201 ~ now
 > 인프라 및 도메인 변경 작업중이라서 추후 링크 교체 예정 입니다
-

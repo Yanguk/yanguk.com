@@ -1,37 +1,43 @@
 import fs from "node:fs";
 import path from "node:path";
-import type { MDXContent } from "mdx/types";
-import { z } from "zod";
+import matter from "gray-matter";
+import { mdProcessor } from "@/lib/md-processor";
+import { type ContentModule, MetadataSchema } from "@/lib/schema";
 
-const MetadataSchema = z.object({
-  title: z.string().min(1, "Title is required"),
-  publishedAt: z.string().min(1, "Published date is required"),
-  draft: z.boolean().optional().default(false),
-});
-
-type Metadata = z.infer<typeof MetadataSchema>;
-
-type ContentModule = {
-  default: MDXContent;
-  metadata: Metadata;
-};
+const contentPath = path.join(process.cwd(), "src", "content");
 
 export function getBlogSlugs() {
-  const dir = path.join(process.cwd(), "src", "content", "blog");
+  const dir = path.join(contentPath, "blog");
 
   return fs
     .readdirSync(dir)
-    .filter((file) => path.extname(file) === ".mdx")
+    .filter((file) => path.extname(file) === ".md")
     .map((file) => path.basename(file, path.extname(file)));
 }
 
-export async function importBlogContent(slug: string): Promise<ContentModule> {
-  const module = await import(`@/content/blog/${slug}.mdx`);
+const importContent = async (filePath: string): Promise<ContentModule> => {
+  const markdown = fs.readFileSync(filePath, "utf-8");
+
+  const { data, content } = matter(markdown);
+  const metadata = MetadataSchema.parse(data);
+
+  const processedContent = await mdProcessor.process(content);
+  const htmlContent: string = processedContent.toString();
+
+  const htmlContentWithTitle = `<h1>${metadata.title}</h1>${htmlContent}`;
 
   return {
-    ...module,
-    metadata: MetadataSchema.parse(module.metadata),
+    htmlContent: htmlContentWithTitle,
+    metadata,
   };
+};
+
+export async function importBlogContent(slug: string): Promise<ContentModule> {
+  return await importContent(path.join(contentPath, "blog", `${slug}.md`));
+}
+
+export async function importAboutContent(): Promise<ContentModule> {
+  return await importContent(path.join(contentPath, "about.md"));
 }
 
 export async function getAllBlogContents() {
@@ -47,9 +53,8 @@ export async function getAllBlogContents() {
   );
 
   contents.sort((a, b) => {
-    const dateCompare = b.metadata.publishedAt.localeCompare(
-      a.metadata.publishedAt,
-    );
+    const dateCompare =
+      b.metadata.publishedAt.getTime() - a.metadata.publishedAt.getTime();
 
     if (dateCompare === 0) {
       return b.slug.localeCompare(a.slug);

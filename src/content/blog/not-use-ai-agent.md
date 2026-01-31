@@ -1,10 +1,8 @@
-export const metadata = {
-  title: "코파일럿 프로 무료기간이 끝나버렸다",
-  publishedAt: "2025-11-14",
-  draft: true,
-};
-
-# {metadata.title}
+---
+title: 코파일럿 프로 무료기간이 끝나버렸다
+publishedAt: 2025-11-14
+draft: true
+---
 
 3년전 부터 github의 [copilot](https://github.com/copilot)를 사용하였는데 이번에 라이센스가 갱신되면서 Pro에서 free로 내려갔다.
 그래서 현재는 Ai 없이 코딩하고 있는데 이에 대한 후기 이다.

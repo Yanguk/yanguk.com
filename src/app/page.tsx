@@ -1,5 +1,8 @@
-import About from "@/content/about.mdx";
+import { MdxHtml } from "@/app/_components/MdxLayout";
+import { importAboutContent } from "@/lib/blog";
 
-export default function Page() {
-  return <About />;
+export default async function Page() {
+  const { htmlContent } = await importAboutContent();
+
+  return <MdxHtml html={htmlContent} />
 }

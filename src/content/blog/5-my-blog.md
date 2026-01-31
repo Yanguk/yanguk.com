@@ -1,9 +1,7 @@
-export const metadata = {
-  title: "블로그 방향성",
-  publishedAt: "2025-12-30",
-};
-
-# {metadata.title}
+---
+title: 블로그 방향성
+publishedAt: 2025-12-30
+---
 
  좋은 기술 블로그란 무엇인가? 사실 나는 잘 모르겠고 긱뉴스에 포스팅된 글이 있다.
 [GeekNews_실무 중심 블로그](https://news.hada.io/topic?id=25296)

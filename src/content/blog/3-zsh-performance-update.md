@@ -1,9 +1,7 @@
-export const metadata = {
-  title: "느려진 zsh 터미널 성능 최적화",
-  publishedAt: "2025-10-03",
-};
-
-# {metadata.title}
+---
+title: 느려진 zsh 터미널 성능 최적화
+publishedAt: 2025-10-03
+---
 
 개발할 때는 주로 neovim을 사용하다 보니, 터미널에서 모든 작업을 수행하는 데
 쉘이 켜지는 속도가 갑자기 너무 느린 게 느껴지는 것이었다.
