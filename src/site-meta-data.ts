@@ -3,7 +3,7 @@ export const siteMetadata = {
   description: "Software Engineer Blog",
   headerTitle: "Yanguk",
 
-  siteUrl: "https://yanguk.com",
+  siteUrl: "/",
 
   siteRepo: "https://github.com/yanguk/yanguk.com",
   github: "https://github.com/yanguk",
