@@ -18,7 +18,7 @@ export default function Header() {
   return (
     <div
       id="header"
-      className="flex flex-col gap-5 border-b-1 pb-2 md:border-r-1 md:border-b-0 md:pr-8"
+      className="flex flex-col gap-5 border-border/60 border-b pb-2 md:border-r md:border-b-0 md:pr-8"
     >
       <Avatar
         className="mb-3 size-10 after:border-none"

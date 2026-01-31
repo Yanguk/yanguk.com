@@ -2,13 +2,12 @@ import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Configure `pageExtensions` to include markdown and MDX files
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
-  // Optionally, add any other Next.js config below
-  // output: "export",
+  output: "export",
 };
 
 const withMDX = createMDX({
+  extension: /\.(md|mdx)$/,
   options: {
     remarkPlugins: [
       "remark-breaks",
@@ -28,8 +27,6 @@ const withMDX = createMDX({
       ["rehype-prism-plus", { defaultLanguage: "js", ignoreMissing: true }],
     ],
   },
-  // Add markdown plugins here, as desired
 });
 
-// Merge MDX config with Next.js config
 export default withMDX(nextConfig);
