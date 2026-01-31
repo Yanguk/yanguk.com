@@ -23,7 +23,7 @@ export default function RootLayout({
     >
       <meta name="apple-mobile-web-app-title" content="yanguk" />
 
-      <body className="flex h-dvh w-full max-w-5xl flex-col md:mx-auto md:p-18">
+      <body className="flex min-h-dvh w-full max-w-5xl flex-col md:mx-auto md:p-18">
         <div className="mx-3 my-8 flex grow flex-col gap-10">
           <div className="flex grow flex-col gap-12 md:flex-row">
             <Header />
