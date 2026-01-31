@@ -213,3 +213,11 @@
     color: var(--color-point);
   }
 }
+
+/* =========================================================
+ * https://github.com/jaywcjlove/remark-github-blockquote-alert
+ * ======================================================= */
+.markdown-alert-title::before,
+.markdown-alert-title::after {
+  content: none;
+}

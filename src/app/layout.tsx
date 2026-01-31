@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+
+import "remark-github-blockquote-alert/alert.css";
 import "@/styles/globals.css";
+
 import Footer from "@/app/_components/Footer";
 import Header from "@/app/_components/Header";
 import { MdxLayout } from "@/app/_components/MdxLayout";

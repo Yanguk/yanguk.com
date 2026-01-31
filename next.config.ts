@@ -13,6 +13,7 @@ const withMDX = createMDX({
       "remark-breaks",
       "remark-gfm",
       ["remark-toc", { heading: "목차" }],
+      ["remark-github-blockquote-alert", { tagName: "blockquote" }],
     ],
     rehypePlugins: [
       ["rehype-slug"],
