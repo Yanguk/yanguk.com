@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import CustomLink from "@/app/(home)/_components/Link";
+import CustomLink from "@/app/_components/Link";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 import { siteMetadata } from "@/site-meta-data";

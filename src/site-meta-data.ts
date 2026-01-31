@@ -5,8 +5,8 @@ export const siteMetadata = {
 
   siteUrl: "/",
 
-  siteRepo: "https://github.com/yanguk/yanguk.com",
-  github: "https://github.com/yanguk",
+  siteRepo: "https://github.com/Yanguk/yanguk.github.io",
+  github: "https://github.com/Yanguk",
   email: "yanguk@duck.com",
   author: "Yanguk",
 };

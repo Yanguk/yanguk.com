@@ -7,7 +7,6 @@ const MetadataSchema = z.object({
   title: z.string().min(1, "Title is required"),
   publishedAt: z.string().min(1, "Published date is required"),
   draft: z.boolean().optional().default(false),
-  fileName: z.string(),
 });
 
 type Metadata = z.infer<typeof MetadataSchema>;
@@ -31,10 +30,7 @@ export async function importBlogContent(slug: string): Promise<ContentModule> {
 
   return {
     ...module,
-    metadata: MetadataSchema.parse({
-      ...module.metadata,
-      fileName: slug,
-    }),
+    metadata: MetadataSchema.parse(module.metadata),
   };
 }
 
@@ -50,9 +46,17 @@ export async function getAllBlogContents() {
     }),
   );
 
-  contents.sort((a, b) =>
-    b.metadata.publishedAt.localeCompare(a.metadata.fileName),
-  );
+  contents.sort((a, b) => {
+    const dateCompare = b.metadata.publishedAt.localeCompare(
+      a.metadata.publishedAt,
+    );
+
+    if (dateCompare === 0) {
+      return b.slug.localeCompare(a.slug);
+    }
+
+    return dateCompare;
+  });
 
   return contents.filter(({ metadata }) => !metadata.draft);
 }

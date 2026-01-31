@@ -1,4 +1,4 @@
-import CustomLink from "@/app/(home)/_components/Link";
+import CustomLink from "@/app/_components/Link";
 import { getAllBlogContents } from "@/lib/blog";
 
 export const dynamicParams = false;

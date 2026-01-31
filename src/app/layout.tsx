@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
-import Footer from "@/app/(home)/_components/Footer";
-import Header from "@/app/(home)/_components/Header";
-import { MdxLayout } from "@/app/(home)/_components/MdxLayout";
-import { allFontVariable } from "@/app/(home)/font";
+import Footer from "@/app/_components/Footer";
+import Header from "@/app/_components/Header";
+import { MdxLayout } from "@/app/_components/MdxLayout";
+import { allFontVariable } from "@/font";
 import { siteMetadata } from "@/site-meta-data";
 
 export const metadata: Metadata = {
