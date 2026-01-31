@@ -14,11 +14,11 @@ export default async function Page() {
           key={slug}
           href={`/blog/${slug}`}
         >
-          <p className="wrap-break-word mb-2 font-semibold text-foreground text-lg md:text-xl">
+          <p className="wrap-break-word font-semibold text-base text-heading-1 md:text-lg">
             {metadata.title}
           </p>
 
-          <time className="block opacity-80">{metadata.publishedAt}</time>
+          <time className="block opacity-50">{metadata.publishedAt}</time>
         </CustomLink>
       ))}
     </div>
