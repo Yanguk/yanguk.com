@@ -3,7 +3,7 @@ import { siteMetadata } from "@/site-meta-data";
 
 export default function Footer() {
   return (
-    <footer className="flex w-full items-center justify-center border-t-1 pt-5 text-sm md:text-base">
+    <footer className="flex w-full items-center justify-center border-t pt-5 text-sm md:text-base">
       <div className="flex space-x-15">
         <div className="flex space-x-4">
           <div>{`© ${new Date().getFullYear()}`}</div>
