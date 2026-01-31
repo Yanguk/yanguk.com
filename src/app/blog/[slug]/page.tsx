@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { GiscusWrapper } from "@/app/_components/Giscus";
 import { getBlogSlugs, importBlogContent } from "@/lib/blog";
 
 export const dynamicParams = false;
@@ -20,5 +21,10 @@ export default async function Page({
     return notFound(); // Render 404 page
   }
 
-  return <Content />;
+  return (
+    <>
+      <Content />
+      <GiscusWrapper className="mt-20 border-border/60 border-t-4 border-double pt-10" />
+    </>
+  );
 }
