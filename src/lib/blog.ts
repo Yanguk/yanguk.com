@@ -4,7 +4,7 @@ import matter from "gray-matter";
 import { mdProcessor } from "@/lib/md-processor";
 import { type ContentModule, MetadataSchema } from "@/lib/schema";
 
-const contentPath = path.join(process.cwd(), "src", "content");
+const contentPath = path.join(process.cwd(), "content");
 
 export function getBlogSlugs() {
   const dir = path.join(contentPath, "blog");
