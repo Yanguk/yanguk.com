@@ -303,7 +303,9 @@ const loginMutation = useMutation({
 ## 마무리
 
 tanstack-query랑 연계해서 하는방식이 아쉬운데,
-trpc를 참고하여서 추후 개발해야겠다. ([개발 진행중](https://github.com/Yanguk/hono-tanstack-query))
+~~trpc를 참고하여서 추후 개발해야겠다. ([개발 진행중](https://github.com/Yanguk/hono-tanstack-query))~~
+
+> 다음 [포스팅](/blog/8-hono-rpc-client-2) 에서 ky랑 같이 쓰는 방법을 찾아서, 따로 개발할 필요 없을 듯하다
 
 ```ts
 // trpc 사용예제
@@ -318,4 +320,5 @@ Proxy 객체를 써야 하는데 그 구현체는 아래에서 확인할 수 있
 
 [hono-rpc-query](https://github.com/kedom1337/hono-rpc-query/blob/master/src/client.ts)
 
-> hono-rpc-query패키지는 에러 케이스를 다룰수가 없어서 아쉬운 부분이있다.
+> ~~hono-rpc-query패키지는 에러 케이스를 다룰수가 없어서 아쉬운 부분이있다.~~
+> 다른 페칭 라이브러리랑 같이 사용하면 문제없음.
