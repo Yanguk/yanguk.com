@@ -221,3 +221,10 @@
 .markdown-alert-title::after {
   content: none;
 }
+
+/**
+ * mermaid
+ */
+.mermaid:not([data-processed="true"]) {
+  font-size: 10px;
+}

@@ -1,3 +1,4 @@
+import type { Code, Parent } from "mdast";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeKatex from "rehype-katex";
 import rehypePrism from "rehype-prism-plus";
@@ -10,6 +11,19 @@ import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import remarkToc from "remark-toc";
 import { unified } from "unified";
+import { visit } from "unist-util-visit";
+
+// biome-ignore lint/suspicious/noExplicitAny: any
+const remarkMermaidDiv = () => (tree: any) => {
+  visit(tree, "code", (node: Code, index, parent: Parent | undefined) => {
+    if (node.lang === "mermaid" && parent && typeof index === "number") {
+      parent.children[index] = {
+        type: "html",
+        value: `<div class="mermaid">${node.value}</div>`,
+      };
+    }
+  });
+};
 
 export const mdProcessor = unified()
   // remark
@@ -20,6 +34,7 @@ export const mdProcessor = unified()
   .use(remarkGithubBlockquoteAlert, { tagName: "blockquote" })
 
   // remark → rehype
+  .use(remarkMermaidDiv)
   .use(remarkRehype, { allowDangerousHtml: true })
 
   // rehype

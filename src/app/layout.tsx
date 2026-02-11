@@ -6,6 +6,7 @@ import "@/styles/globals.css";
 import Footer from "@/app/_components/Footer";
 import Header from "@/app/_components/Header";
 import { MdxLayout } from "@/app/_components/MdxLayout";
+import { MermaidInit } from "@/app/_components/MermaidInit";
 import { allFontVariable } from "@/font";
 import { siteMetadata } from "@/site-meta-data";
 
@@ -36,6 +37,8 @@ export default function RootLayout({
 
           <Footer />
         </div>
+
+        <MermaidInit />
       </body>
     </html>
   );
