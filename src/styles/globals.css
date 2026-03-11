@@ -140,7 +140,7 @@
   --color-heading-3: oklch(60% 0.08 45); /* h3 – surimiOrange 느낌 */
 
   /* blockquote colors */
-  --color-blockquote-text: oklch(82% 0.04 95); /* oldWhite-ish */
+  --color-blockquote-text: oklch(72% 0.07 270); /* springViolet-ish */
   --color-blockquote-border: oklch(42% 0.03 275); /* sumiInk4 */
 }
 

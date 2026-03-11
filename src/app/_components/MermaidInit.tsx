@@ -1,8 +1,8 @@
 "use client";
 
+import mermaid from "mermaid";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
-import mermaid from "mermaid";
 
 export function MermaidInit() {
   const pathname = usePathname();
@@ -21,6 +21,7 @@ export function MermaidInit() {
     });
   }, []);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: 페이지 변경시 실행
   useEffect(() => {
     mermaid.run({
       querySelector: ".mermaid",
