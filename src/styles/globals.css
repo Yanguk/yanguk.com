@@ -212,6 +212,9 @@
   strong {
     color: var(--color-point);
   }
+  thead th {
+    color: var(--color-point);
+  }
 }
 
 /* =========================================================
